@@ -1,0 +1,70 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+}
+
+
+
+/* font-family: "Poppins", sans-serif; */
+
+
+nav{
+       font-family: "Poppins",sans-serif;
+       font-size: 17px;
+       text-transform: uppercase;
+       box-shadow: 0 8px 6px -6px rgb(58, 57, 57);
+}
+nav ul li a{
+      text-decoration: none;
+}
+nav ul li a.active{
+     border-bottom: 2px solid black;
+}
+.navbar-brand{
+      font-family: 'roboto',sans-serif;
+      font-weight: 700;
+      letter-spacing: 3px;
+}
+.footer{
+      color: white;
+      padding: 25px;
+      background: -webkit-linear-gradient(
+            to right,
+            #434343,
+            #000000
+      );
+      background: linear-gradient(to right,#434343,#000000);
+}
+.footer a{
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+}
+.footer a:hover{
+      color:#ffefba;
+      border-bottom: 1px solid #f1eee2;
+}
+.contactus{
+      display: grid;
+      grid-template-columns: minmax(200px, 50vw) minmax(100px, 40vw);
+}
+.register{
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      height:70vh ;
+      flex-direction: column;
+
+}
+/* .active{
+      background-color: rgb(9, 144, 223);
+} */

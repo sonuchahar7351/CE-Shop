@@ -37,5 +37,5 @@ app.use('/api/v1/product',productRoutes)
 
 
 app.listen(PORT,()=>{
-      console.log("server is running on 8000");
+      console.log("server is running on 8000 port");
 })

@@ -15,7 +15,7 @@ const Orders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/v1/auth/orders"
+        `${import.meta.env.VITE_APP_API}/api/v1/auth/orders`
       );
       setOrders(data);
     } catch (error) {

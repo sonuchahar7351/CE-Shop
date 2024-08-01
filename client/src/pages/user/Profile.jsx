@@ -26,7 +26,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const {data} = await axios.put(
-        `http://localhost:8000/api/v1/auth/profile`,
+        `${import.meta.env.VITE_APP_API}/api/v1/auth/profile`,
         {
           name,
           email,

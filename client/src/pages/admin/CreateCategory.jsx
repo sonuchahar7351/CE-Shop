@@ -18,7 +18,7 @@ const CreateCategory = () => {
   const handleUpdate = async(e)=>{
       e.preventDefault();
       try {
-        const {data}=await axios.put(`http://localhost:8000/api/v1/category/update-category/${selected._id}`,{name:updateName})
+        const {data}=await axios.put(`${import.meta.env.VITE_APP_API}/api/v1/category/update-category/${selected._id}`,{name:updateName})
         if(data.success){
           toast.success(data.message);
           setSelected(null);
@@ -37,7 +37,7 @@ const CreateCategory = () => {
 
   const handleDelete = async(id)=>{
      try {
-      const {data}=await axios.delete(`http://localhost:8000/api/v1/category/delete-category/${id}`);
+      const {data}=await axios.delete(`${import.meta.env.VITE_APP_API}/api/v1/category/delete-category/${id}`);
        
       if(data.succes){
        getAllCTG();
@@ -54,7 +54,7 @@ const CreateCategory = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try {
-      const {data}= await axios.post('http://localhost:8000/api/v1/category/create-category',{name})
+      const {data}= await axios.post(`${import.meta.env.VITE_APP_API}/api/v1/category/create-category`,{name})
       if(data.success){
         toast.success(data.category.name+" is created");
         setName("")
@@ -71,7 +71,7 @@ const CreateCategory = () => {
   const getAllCTG = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/v1/category/get-category"
+        `${import.meta.env.VITE_APP_API}/api/v1/category/get-category`
       );
       if (data.success) {
         setCategory(data.category);

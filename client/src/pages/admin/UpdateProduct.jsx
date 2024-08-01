@@ -29,7 +29,7 @@ const UpdateProduct = () => {
   const getAllCTG = async () => {
     try {
       setLoading(true)
-      const { data } = await axios.get("http://localhost:8000/api/v1/category/get-category");
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/category/get-category`);
       if (data.success) {
         setCategory(data?.category);
         setLoading(false)
@@ -44,7 +44,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       setLoading(true)
-      const { data } = await axios.get(`http://localhost:8000/api/v1/product/get-product/${params.slug}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/product/get-product/${params.slug}`);
       setId(data.product._id);
       setName(data.product.name);
       setDescription(data.product.description);
@@ -82,7 +82,7 @@ const UpdateProduct = () => {
         productData.append("photo", existingPhoto); // Append the existing photo URL if no new photo is selected
       }
         setLoading(true)
-      const { data } = await axios.put(`http://localhost:8000/api/v1/product/update-product/${id}`, productData);
+      const { data } = await axios.put(`${import.meta.env.VITE_APP_API}/api/v1/product/update-product/${id}`, productData);
       if (data.success) {
         setLoading(false)
         toast.success("updated successfully");
@@ -112,7 +112,7 @@ const UpdateProduct = () => {
           let asnwer = window.prompt("Are you sure to delete this product ? ");
           if(!asnwer) return
           setLoading(true)
-          const {data}=await axios.delete(`http://localhost:8000/api/v1/product/delete-product/${id}`)
+          const {data}=await axios.delete(`${import.meta.env.VITE_APP_API}/api/v1/product/delete-product/${id}`)
           setLoading(false)
             toast.success("Deleted succussfully");
             navigate('/dashboard/admin/products')

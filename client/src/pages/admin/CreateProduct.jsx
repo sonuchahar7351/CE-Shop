@@ -22,7 +22,7 @@ const CreateProduct = () => {
   const getAllCTG = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/v1/category/get-category"
+       `${import.meta.env.VITE_APP_API}/api/v1/category/get-category`
       );
       if (data.success) {
         setCategory(data?.category);
@@ -45,11 +45,9 @@ const CreateProduct = () => {
       productData.append("quantity", quantity);
       productData.append("photo", photo);
       productData.append("category", singleCategory);
-      const { data } = await axios.post(
-        `http://localhost:8000/api/v1/product/create-product`,
-        productData
-      );
+      const { data } = await axios.post(`${import.meta.env.VITE_APP_API}/api/v1/product/create-product`,productData);
       if (data.success) {
+        alert("created")
          toast.success("Product created successfully");
 
         setName("");
@@ -141,7 +139,7 @@ const CreateProduct = () => {
               cols={56}
               placeholder="tell us more about product or description"
               value={descripion}
-              onCanPlay={(e)=>setDescription(e.target.value)}
+              onChange={(e)=>setDescription(e.target.value)}
               ></textarea>
             </div>
             <div className="mt-2 w-[100%]">

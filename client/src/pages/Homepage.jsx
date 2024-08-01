@@ -22,16 +22,14 @@ const Homepage = () => {
   //get produts
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8000/api/v1/product/product-list/${page}`
-      );
-
-      const uniqueProducts = await data.products.filter(
+      const { data } = await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`);
+    console.log(data)
+      const uniqueProducts = await data.products?.filter(
         (product, index, self) =>
           index === self.findIndex((p) => p._id === product._id)
       );
 
-      await setProducts((prevProducts) => [
+       setProducts((prevProducts) => [
         ...prevProducts,
         ...uniqueProducts.filter(
           (product) => !prevProducts.some((p) => p._id === product._id)
@@ -50,7 +48,7 @@ const Homepage = () => {
   const getAllCTG = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/v1/category/get-category"
+       `${import.meta.env.VITE_APP_API}/api/v1/category/get-category`
       );
 
       if (data.success) {
@@ -64,7 +62,7 @@ const Homepage = () => {
   const filterProduct = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/api/v1/product/product-filters",
+        `${import.meta.env.VITE_APP_API}/api/v1/product/product-filters`,
         {
           checked,
           radio,
@@ -96,7 +94,7 @@ const Homepage = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/product/product-count`
+        `${import.meta.env.VITE_APP_API}/api/v1/product/product-count`
       );
 
       setTotal(data?.total);
@@ -108,7 +106,7 @@ const Homepage = () => {
   const loadMore = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/product/product-list/${page}`
+        `${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`
       );
 
       const uniqueProducts = data.products.filter(

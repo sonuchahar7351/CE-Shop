@@ -17,7 +17,7 @@ const ProductDetails = () => {
     try { 
         setLoading(true)
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/product/get-product/${params.slug}`
+        `${import.meta.env.VITE_APP_API}/api/v1/product/get-product/${params.slug}`
       )
       await setProduct(data?.product);
         setLoading(false)
@@ -29,7 +29,7 @@ const ProductDetails = () => {
 
    const getSimilarProduct=async(pid,cid)=>{
            try {
-              const {data}=await axios(`http://localhost:8000/api/v1/product/releted-product/${pid}/${cid}`)
+              const {data}=await axios(`${import.meta.env.VITE_APP_API}/api/v1/product/releted-product/${pid}/${cid}`)
               setReleted(data?.products);
            } catch (error) {
               console.log(error)

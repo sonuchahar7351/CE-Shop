@@ -13,7 +13,7 @@ const SearchInput = () => {
             try {
                   e.preventDefault();
                   setLoading(true)
-                  const {data}=await axios.get(`http://localhost:8000/api/v1/product/search/${value.keyword}`)
+                  const {data}=await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/product/search/${value.keyword}`)
                   setLoading(false)
                   setValue({...value,result:data.result});
                   navigate('/search');

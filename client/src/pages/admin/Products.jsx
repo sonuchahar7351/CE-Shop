@@ -13,7 +13,7 @@ const Products = () => {
     try {
       setLoading(true)
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/product/get-product`
+        `${import.meta.env.VITE_APP_API}/api/v1/product/get-product`
       );
       setLoading(false)
       setProducts(data.products);

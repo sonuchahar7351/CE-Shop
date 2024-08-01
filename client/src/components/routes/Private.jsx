@@ -12,7 +12,7 @@ export default function PrivateRoute(){
            
             const authCheck=async()=>{
 
-                  const res=await axios.get('http://localhost:8000/api/v1/auth/user-auth')
+                  const res=await axios.get(`${import.meta.env.VITE_APP_API}/api/v1/auth/user-auth`)
 
                   if(res.data.ok){
                         setOk(true)
